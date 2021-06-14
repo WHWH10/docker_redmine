@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  redmine:
+    container_name: redmine
+    image: redmine:3.4
+    restart: always
+    ports:
+      - 9292:3000
+    environment:
+      - DB_ADAPTER=mysql2
+      - DB_HOST=localhost
+      - DB_PORT=3306
+      - DB_NAME=redmine_data
+      - DB_USER=redmine
+      - DB_PASS=redmine
+    volumes:
+      - /Users/clms/docker_redmine/redmine_data:/usr/src/redmine/files
+      - /Users/clms/docker_redmine/redmine_plugins:/usr/src/redmine/plugins
+      - /Users/clms/docker_redmine/redmine_themes:/usr/src/redmine/public/themes
